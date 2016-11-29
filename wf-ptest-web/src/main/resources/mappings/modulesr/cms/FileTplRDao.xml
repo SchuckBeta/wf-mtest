@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="www.wanfin.com.ptest.providers.modules.cms.dao.FileTplRDao">
+    
+	<sql id="fileTplColumns">
+		a.id AS "id",
+		a.file AS "file",
+		a.root AS "root"
+	</sql>
+	
+	<sql id="fileTplJoins"></sql>
+    
+	<select id="get" resultType="FileTpl">
+		SELECT 
+			<include refid="fileTplColumns"/>
+		FROM fileTpl a
+		<include refid="fileTplJoins"/>
+		WHERE a.id = #{id}
+	</select>
+	
+	<select id="findList" resultType="FileTpl">
+		SELECT 
+			<include refid="fileTplColumns"/>
+		FROM fileTpl a
+		<include refid="fileTplJoins"/>
+		<where>
+			<if test="file != null and file != ''">
+				AND a.file LIKE 
+					<if test="dbName == 'oracle'">'%'||#{file}||'%'</if>
+					<if test="dbName == 'mssql'">'%'+#{file}+'%'</if>
+					<if test="dbName == 'mysql'">CONCAT('%', #{file}, '%')</if>
+			</if>
+			<if test="root != null and root != ''">
+				AND a.root LIKE 
+					<if test="dbName == 'oracle'">'%'||#{root}||'%'</if>
+					<if test="dbName == 'mssql'">'%'+#{root}+'%'</if>
+					<if test="dbName == 'mysql'">CONCAT('%', #{root}, '%')</if>
+			</if>
+		</where>
+	</select>
+	
+	<select id="findAllList" resultType="FileTpl">
+		SELECT 
+			<include refid="fileTplColumns"/>
+		FROM fileTpl a
+	</select>
+</mapper>

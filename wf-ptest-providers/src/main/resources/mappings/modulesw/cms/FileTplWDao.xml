@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="www.wanfin.com.ptest.providers.modules.cms.dao.FileTplWDao">
+
+	<sql id="fileTplColumns">
+		a.id AS "id",
+		a.file AS "file",
+		a.root AS "root"
+	</sql>
+	
+	<insert id="insert">
+		INSERT INTO fileTpl(
+			id,
+			file,
+			root
+		) VALUES (
+			#{id},
+			#{file},
+			#{root}
+		)
+	</insert>
+	
+	<insert id="insertStr" >
+		INSERT INTO fileTpl(
+			id,
+			file,
+			root
+		) VALUES (
+			#{id},
+			#{file},
+			#{root}
+		)
+	</insert>
+	
+	<update id="update">
+		UPDATE fileTpl SET 	
+			file = #{file},
+			root = #{root}
+		WHERE id = #{id}
+	</update>
+	
+	<update id="delete">
+		DELETE FROM fileTpl WHERE id = #{id}
+	</update>
+</mapper>

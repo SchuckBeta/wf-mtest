@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>www.wanfin.com</groupId>
+		<artifactId>wf-mtest</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	
+	<artifactId>wf-ptest-api</artifactId>
+	<packaging>jar</packaging>
+	<name>${project.artifactId}</name>
+	<url>http://maven.apache.org</url>
+	<description>The demo provider module of dubbo project</description>
+	
+	<properties>
+		<skip_maven_deploy>true</skip_maven_deploy>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.nexus>http://192.168.1.164:8082/content/groups/public/</maven.nexus>
+	</properties>
+
+	<!-- 设定主仓库，按设定顺序进行查找。 -->
+	<repositories>
+		<!-- 如有Nexus私服, 取消注释并指向正确的服务器地址. -->
+		<repository>
+			<id>nexus-repos</id>
+			<name>Team Nexus Repository</name>
+			<url>${maven.nexus}</url>
+		</repository>
+	</repositories>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+		</dependency>
+	</dependencies>
+
+	<distributionManagement>
+		<repository>
+			<id>releases</id>
+			<url>http://localhost:8082/content/repositories/releases</url>
+		</repository>
+		<snapshotRepository>
+			<id>snapshots</id>
+			<url>http://localhost:8082/content/repositories/snapshots</url>
+		</snapshotRepository>
+	</distributionManagement>
+</project>
