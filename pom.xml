@@ -28,7 +28,9 @@
 				</file>
 			</activation>
 			<modules>
-				<module>dubbo-test</module>
+				<module>wf-ptest-api</module>
+				<module>wf-ptest-providers</module>
+			        <module>wf-ptest-client</module>
 			</modules>
 		</profile>
 		<profile>
